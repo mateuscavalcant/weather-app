@@ -45,7 +45,7 @@ func WeatherAppView(c *gin.Context) {
             <img src="http://openweathermap.org/img/wn/{{.Icon}}@2x.png" alt="Weather Icon">
             {{end}}
             {{if .Message}}
-            <img src="public/images/error.jpeg" alt="invalid location">
+            <img src="public/images/error.png" alt="invalid location">
             <p class="error">{{.Error}}</p>
             <p class="message">{{.Message}}</p>
             {{end}}
