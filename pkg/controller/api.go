@@ -51,7 +51,7 @@ func WeatherApp(c *gin.Context) {
 
 	temperatureValue, ok := mainData["temp"].(float64)
 	if !ok {
-		fmt.Println("Erro ao obter o valor da temperatura.")
+		RenderTemplate(c, model.Data{Message:"Erro ao obter o valor da temperatura."})
 		return
 	}
 
