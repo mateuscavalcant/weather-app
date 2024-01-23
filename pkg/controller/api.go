@@ -25,40 +25,40 @@ func WeatherApp(c *gin.Context) {
 
 	response, err := http.Get(url)
 	if err != nil {
-		fmt.Println("Erro ao enviar a solicitação:", err)
+		RenderTemplate(c, model.Data{Message: "Error sending the request.", Error: "HTTP 500"})
 		return
 	}
 	defer response.Body.Close()
 
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		fmt.Println("Erro ao ler a resposta:", err)
+		RenderTemplate(c, model.Data{Message: "Error reading the response.", Error: "HTTP 500" })
 		return
 	}
 
 	var data map[string]interface{}
 	err = json.Unmarshal(body, &data)
 	if err != nil {
-		fmt.Println("Erro ao decodificar JSON:", err)
+		RenderTemplate(c, model.Data{Message: "Error decoding JSON.", Error: "HTTP 500" })
 		return
 	}
 
 	mainData, ok := data["main"].(map[string]interface{})
 	if !ok {
-		RenderTemplate(c, model.Data{Message: "Oops! Invalid location :/"})
+		RenderTemplate(c, model.Data{Message: "Oops! Invalid location :/", Error: "HTTP 400"})
 		return
 	}
 
 	temperatureValue, ok := mainData["temp"].(float64)
 	if !ok {
-		RenderTemplate(c, model.Data{Message:"Erro ao obter o valor da temperatura."})
+		RenderTemplate(c, model.Data{Message:"Error getting the temperature value.", Error: "HTTP 500"})
 		return
 	}
 
 	if data["cod"] != nil {
 		cod := data["cod"].(float64)
 		if cod != 200 {
-			fmt.Println("Ops, localização não encontrada. Verifique se o nome da cidade é válido.")
+			RenderTemplate(c, model.Data{Message:"Oops, location not found.", Error: "HTTP 404"})
 			return
 		}
 	}

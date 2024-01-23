@@ -6,4 +6,5 @@ type Data struct {
 	City        string
 	Description string
 	Message     string
+	Error string
 }

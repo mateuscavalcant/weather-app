@@ -44,7 +44,8 @@ var htmlTemplate = `
             <img src="http://openweathermap.org/img/wn/{{.Icon}}@2x.png" alt="Weather Icon">
             {{end}}
             {{if .Message}}
-            <img src="public/images/notfound.png" alt="invalid location">
+            <img src="public/images/error.jpeg" alt="invalid location">
+            <p class="error">{{.Error}}</p>
             <p class="message">{{.Message}}</p>
             {{end}}
             <p class="temperature">{{.Temperature}}</p>
@@ -70,6 +71,7 @@ func WeatherAppView(c *gin.Context) {
 		City: "",
 		Description: "",
         Message: "",
+        Error: "",
 	}
     	
 	RenderTemplate(c, data)
