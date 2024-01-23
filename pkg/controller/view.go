@@ -10,7 +10,9 @@ import (
 
 var tmpl *template.Template
 
-var htmlTemplate = `
+
+func WeatherAppView(c *gin.Context) {
+    htmlTemplate := `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +63,6 @@ var htmlTemplate = `
 
 `
 
-func WeatherAppView(c *gin.Context) {
 	tmpl = template.Must(template.New("WeatherApp").Parse(htmlTemplate)) 
 
 	data := model.Data {
