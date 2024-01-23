@@ -12,9 +12,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var CelsiusTemp string
-var description string
-var icon string
+
+
 
 func WeatherApp(c *gin.Context) {
 	apiKey := os.Getenv("API_KEY")
@@ -63,8 +62,10 @@ func WeatherApp(c *gin.Context) {
 		}
 	}
 
-	CelsiusTemp = fmt.Sprintf("%d°C", int(temperatureValue-273.15))
+	CelsiusTemp := fmt.Sprintf("%d°C", int(temperatureValue-273.15))
 
+	var description string
+	var icon string
 	weatherDescription, ok := data["weather"].([]interface{})
 	if ok && len(weatherDescription) > 0 {
 		descriptionMap, ok := weatherDescription[0].(map[string]interface{})
