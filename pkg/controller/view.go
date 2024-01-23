@@ -12,7 +12,6 @@ var tmpl *template.Template
 
 var htmlTemplate = `
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
