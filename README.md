@@ -21,6 +21,10 @@ O Weather App é um aplicativo que permite aos usuários obterem informações s
 
 - **OpenWeatherMap API**: Para obtenção das condições climáticas, o aplicativo consome a API do OpenWeatherMap.
 
+## Configuração
+Obtenha uma chave de API do OpenWeatherMap em https://openweathermap.org/
+substitua o valor da variável "apiKey" no código pelo valor da sua chave de API.
+
 ## Como Executar o Projeto
 
 Certifique-se de ter o Go instalado em sua máquina. Clone o repositório e execute os seguintes comandos:
@@ -34,3 +38,7 @@ go mod tidy
 
 # Execute o aplicativo
 go run main.go
+```
+
+## Aviso Legal
+Este projeto é apenas para fins educacionais e não se destina a fins comerciais.
