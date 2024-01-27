@@ -15,9 +15,9 @@ Projeto de obtenção da temperatura e da descrição do tempo com base na local
 
 O Weather App é um aplicativo que permite aos usuários obterem informações sobre a temperatura e a descrição do tempo com base na localidade inserida. O projeto utiliza as seguintes tecnologias:
 
-- **Front-end Integrado**: O front-end está integrado junto ao servidor para garantir segurança contra ataques de injeção HTML.
+- **Segurança**: Uso do pacote `html/template` para garantir segurança contra ataques de injeção HTML.
 
-- **Framework Gin**: O projeto utiliza o framework Gin para criar rotas próprias e gerenciar a lógica da aplicação.
+- **Framework Gin**: O projeto utiliza o pacote `github.com/gin-gonic/gin` para criar rotas próprias e gerenciar a lógica da aplicação.
 
 - **OpenWeatherMap API**: Para obtenção das condições climáticas, o aplicativo consome a API do OpenWeatherMap.
 
