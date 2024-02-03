@@ -12,9 +12,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
-
-
 func WeatherApp(c *gin.Context) {
 	apiKey := os.Getenv("API_KEY")
 	baseURL := "http://api.openweathermap.org/data/2.5/weather?q="
