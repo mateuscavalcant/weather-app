@@ -5,6 +5,7 @@ Projeto de obtenção da temperatura e da descrição do tempo com base na local
 ## Tecnologias
 
 - Go
+- HTML 
 - CSS
 
 ## Acesse o App
