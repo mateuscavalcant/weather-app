@@ -12,7 +12,7 @@ var tmpl *template.Template
 
 func WeatherAppView(c *gin.Context) {
 
-	tmpl = template.Must(template.ParseFiles("template/weatherapp.html")) 
+	tmpl = template.Must(template.ParseFiles("templates/weatherapp.html")) 
 
 	data := model.Data {
         Icon: "",
