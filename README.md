@@ -5,18 +5,16 @@ Projeto de obtenção da temperatura e da descrição do tempo com base na local
 ## Tecnologias
 
 - Go
-- HTML 
-- CSS
+- React 
 
 ## Acesse o App
 
-[Weather App](https://weather-app-qt59.onrender.com/weather)
+[Weather App](https://weather-app-rho-five-14.vercel.app)
 
 ## Descrição
 
 O Weather App é um aplicativo que permite aos usuários obterem informações sobre a temperatura e a descrição do tempo com base na localidade inserida. O projeto utiliza as seguintes tecnologias:
 
-- **Segurança**: Uso do pacote `html/template` para garantir segurança contra ataques de injeção HTML.
 
 - **Framework Gin**: O projeto utiliza o pacote `github.com/gin-gonic/gin` para criar rotas próprias e gerenciar a lógica da aplicação.
 
