@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import './WeatherApp.css'
+import './WeatherApp.css';
+import LoadingSpinner from './LoadingSpinner'; 
 
 const WeatherApp = () => {
     const [location, setLocation] = useState('');
     const [weatherdata, setWeatherData] = useState({ city: '', icon: '', description: '', temperature: '' });
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoading(true); 
 
-        fetch("http://localhost:8080/weather", {
+        fetch("https://weather-app-qt59.onrender.com/weather", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -18,18 +21,20 @@ const WeatherApp = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data); // Debugging
+                console.log(data);
                 if (data.error) {
                     setError(data.error);
                     setWeatherData({ city: '', icon: '', description: '', temperature: '' });
                 } else {
                     setError('');
-                    setWeatherData(data.weatherdata || {}); // Garante que sempre é um objeto
+                    setWeatherData(data.weatherdata || {});
                 }
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
                 setError('Error fetching weather data');
+                setLoading(false); 
             });
     };
 
@@ -52,19 +57,25 @@ const WeatherApp = () => {
                             </button>
                         </div>
                         <div className="weather-box">
-                            {weatherdata.icon && (
-                                <img src={`https://openweathermap.org/img/wn/${weatherdata.icon}@2x.png`} alt="Weather Icon" />
-                            )}
-                            {error && (
+                            {loading ? (
+                                <LoadingSpinner /> 
+                            ) : (
                                 <>
-                                    <img src="error.png" alt="invalid location" />
-                                    <p className="error">{error}</p>
-                                </>
-                            )}
-                            {weatherdata.temperature && (
-                                <>
-                                    <p className="temperature">{weatherdata.temperature}</p>
-                                    <p className="description">{weatherdata.description}</p>
+                                    {weatherdata.icon && (
+                                        <img src={`https://openweathermap.org/img/wn/${weatherdata.icon}@2x.png`} alt="Weather Icon" />
+                                    )}
+                                    {error && (
+                                        <>
+                                            <img src="error.png" alt="invalid location" />
+                                            <p className="error">{error}</p>
+                                        </>
+                                    )}
+                                    {weatherdata.temperature && (
+                                        <>
+                                            <p className="temperature">{weatherdata.temperature}</p>
+                                            <p className="description">{weatherdata.description}</p>
+                                        </>
+                                    )}
                                 </>
                             )}
                         </div>
