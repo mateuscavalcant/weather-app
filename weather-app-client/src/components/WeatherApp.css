@@ -77,13 +77,6 @@ form {
     text-transform: capitalize;
 }
 
-.weather-box .loading {
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: 500;
-    text-transform: capitalize;
-}
-
 .weather-box .description {
     color: #ffffff;
     font-size: 22px;
