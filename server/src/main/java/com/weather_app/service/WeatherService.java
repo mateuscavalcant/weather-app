@@ -12,10 +12,13 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 @Service
 public class WeatherService {
 
-    private String apiKey = "edd479dc1eeb59588852ae2e8c56d74e";
+    Dotenv dotenv = Dotenv.load();
+    String apiKey = dotenv.get("API_KEY");
 
     public Map<String, Object> getWeatherData(String city) {
         String baseURL = "http://api.openweathermap.org/data/2.5/weather?q=";

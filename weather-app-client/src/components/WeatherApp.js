@@ -12,7 +12,7 @@ const WeatherApp = () => {
         event.preventDefault();
         setLoading(true); 
 
-        fetch("http://localhost:8080/weather", {
+        fetch("https://weather-data-api-topaz.vercel.app/weather", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -26,13 +26,12 @@ const WeatherApp = () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 if (data.error) {
                     setError(data.error);
                     setWeatherData({ city: '', icon: '', description: '', temperature: '' });
                 } else {
                     setError('');
-                    setWeatherData(data.weatherdata || {});
+                    setWeatherData(data || {});
                 }
                 setLoading(false);
             })
