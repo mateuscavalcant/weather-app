@@ -12,14 +12,19 @@ const WeatherApp = () => {
         event.preventDefault();
         setLoading(true); 
 
-        fetch("https://weather-app-qt59.onrender.com/weather", {
+        fetch("http://localhost:8080/weather", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ location: location })
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 console.log(data);
                 if (data.error) {
@@ -32,10 +37,11 @@ const WeatherApp = () => {
                 setLoading(false);
             })
             .catch(error => {
-                console.error(error);
+                console.error('Error:', error);
                 setError('Error fetching weather data');
-                setLoading(false); 
+                setLoading(false);
             });
+        
     };
 
     return (
