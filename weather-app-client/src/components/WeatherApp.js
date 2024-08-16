@@ -31,13 +31,14 @@ const WeatherApp = () => {
                     setWeatherData({ city: '', icon: '', description: '', temperature: '' });
                 } else {
                     setError('');
-                    setWeatherData(data || {});
+                    setWeatherData(data.weatherdata || {});
                 }
                 setLoading(false);
             })
             .catch(error => {
                 console.error('Error:', error);
                 setError('Error fetching weather data');
+                setWeatherData({ city: '', icon: '', description: '', temperature: '' });
                 setLoading(false);
             });
         
