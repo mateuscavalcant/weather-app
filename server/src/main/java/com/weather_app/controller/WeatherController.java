@@ -26,11 +26,11 @@ public class WeatherController {
         try {
             Map<String, Object> weatherData = weatherService.getWeatherData(locationRequest.getLocation());
             if (weatherData == null || weatherData.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "No weather data found"));
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("weatherDataError", "No weather data from location was found"));
             }
             return ResponseEntity.ok(weatherData);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", e.getMessage()));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("weatherDataError", e.getMessage()));
         }
     
 }

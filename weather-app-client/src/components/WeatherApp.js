@@ -19,30 +19,23 @@ const WeatherApp = () => {
             },
             body: JSON.stringify({ location: location })
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.error) {
-                    setError(data.error);
-                    setWeatherData({ city: '', icon: '', description: '', temperature: '' });
-                } else {
-                    setError('');
-                    setWeatherData(data.weatherdata || {});
-                }
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                setError('Error fetching weather data');
+        .then(response => response.json())
+        .then(data => {
+            if (data.weatherDataError) {
+                setError(data.weatherDataError);
                 setWeatherData({ city: '', icon: '', description: '', temperature: '' });
-                setLoading(false);
-            });
-        
-    };
+            } else {
+                setError('');
+                setWeatherData(data.weatherdata || {});
+            }
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error(error);
+            setError('Error fetching weather data');
+            setLoading(false);
+        });
+};
 
     return (
         <section className="container forms">

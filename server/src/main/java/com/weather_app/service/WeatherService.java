@@ -38,7 +38,7 @@ public class WeatherService {
         }
 
         if (response.getStatusCode() != HttpStatus.OK) {
-            throw new RuntimeException("Location not found.");
+            throw new RuntimeException("Location not found");
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
