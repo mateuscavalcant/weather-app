@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './WeatherApp.css';
-import LoadingSpinner from './LoadingSpinner'; 
+import LoadingSpinner from './LoadingSpinner';
 
 const WeatherApp = () => {
     const [location, setLocation] = useState('');
@@ -10,7 +10,7 @@ const WeatherApp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setLoading(true); 
+        setLoading(true);
 
         fetch("https://weather-data-api-topaz.vercel.app/weather", {
             method: "POST",
@@ -19,23 +19,23 @@ const WeatherApp = () => {
             },
             body: JSON.stringify({ location: location })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.weatherDataError) {
-                setError(data.weatherDataError);
-                setWeatherData({ city: '', icon: '', description: '', temperature: '' });
-            } else {
-                setError('');
-                setWeatherData(data.weatherdata || {});
-            }
-            setLoading(false);
-        })
-        .catch(error => {
-            console.error(error);
-            setError('Error fetching weather data');
-            setLoading(false);
-        });
-};
+            .then(response => response.json())
+            .then(data => {
+                if (data.weatherDataError) {
+                    setError(data.weatherDataError);
+                    setWeatherData({ city: '', icon: '', description: '', temperature: '' });
+                } else {
+                    setError('');
+                    setWeatherData(data.weatherdata || {});
+                }
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error(error);
+                setError('Error fetching weather data');
+                setLoading(false);
+            });
+    };
 
     return (
         <section className="container forms">
@@ -57,7 +57,7 @@ const WeatherApp = () => {
                         </div>
                         <div className="weather-box">
                             {loading ? (
-                                <LoadingSpinner /> 
+                                <LoadingSpinner />
                             ) : (
                                 <>
                                     {weatherdata.icon && (
@@ -65,7 +65,7 @@ const WeatherApp = () => {
                                     )}
                                     {error && (
                                         <>
-                                            <img src="error.png" alt="invalid location" />
+                                            <img src="error.png" className="error-img" alt="invalid location" />
                                             <p className="error">{error}</p>
                                         </>
                                     )}

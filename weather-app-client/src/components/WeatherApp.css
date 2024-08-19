@@ -60,6 +60,13 @@ form {
     margin-top: 20px;
 }
 
+.weather-box .error-img {
+    image-rendering: optimizeQuality;
+    height: 130px;
+    width: 130px;
+    margin-top: 20px;
+}
+
 .weather-box .error {
     position: relative;
     color: #ffffff;
