@@ -1,14 +1,17 @@
 FROM eclipse-temurin:17-jre-jammy as runtime
 
-# Define um diretório de trabalho para a aplicação
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copia o JAR da aplicação diretamente para o diretório de trabalho
+# Copia o JAR da aplicação
 COPY target/*.jar app.jar
 
-# Usa um usuário não root para maior segurança
+# Cria um usuário seguro
 RUN useradd -m appuser
 USER appuser
 
-# Ccomando de entrada para executar a aplicação
+# Expõe a porta do Spring Boot
+EXPOSE 8080
+
+# Comando de entrada
 CMD ["java", "-jar", "app.jar"]
