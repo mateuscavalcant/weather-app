@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,13 +13,11 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 @Service
 public class WeatherService {
 
-    Dotenv dotenv = Dotenv.load();
-    String apiKey = dotenv.get("API_KEY");
+    @Value("${weather.api.key}")
+    private String apiKey;
 
     public Map<String, Object> getWeatherData(String city) {
         String baseURL = "http://api.openweathermap.org/data/2.5/weather?q=";
