@@ -51,13 +51,15 @@ form {
 
 .weather-box {
     text-align: center;
+    margin-top: 100px;
 }
 
 .weather-box img {
     image-rendering: optimizeQuality;
-    height: 250px;
-    width: 250px;
+    height: 170px;
+    width: 170px;
     margin-top: 20px;
+    margin-left: -225px;
 }
 
 .weather-box .error-img {
@@ -83,24 +85,37 @@ form {
     font-weight: 500;
     text-transform: capitalize;
 }
+.weather-box .weatherDataInfos {
+    margin-top: -180px;
+}
 
 .weather-box .description {
     color: #ffffff;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: capitalize;
+    margin-left: 170px;
+}
+
+.weather-box .dataTime {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 400;
+   
+    text-transform: capitalize;
+    margin-left: 150px;
 }
 
 .weather-box .temperature {
     position: relative;
     color: #ffffff;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 800;
-    margin-top: 10px;
-    margin-left: -16px;
+    margin-left: 200px;
 }
 
 .search-box {
+    margin-top: -10px;
     width: 100%;
     height: min-content;
     display: flex;
