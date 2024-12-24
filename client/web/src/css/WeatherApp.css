@@ -131,15 +131,15 @@ form {
 
 .weatherDataInfosFooter {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
-    gap: 10px; /* Espaço entre os itens */
-    margin-top: 20px; /* Espaçamento superior */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .weatherDataInfosFooter p {
     margin: 0;
-    font-size: 14px; /* Ajuste conforme necessário */
-    color: #ffffff; /* Cor do texto */
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .search-box {
@@ -195,6 +195,6 @@ form {
 .separator {
     border: none;
     height: 1px;
-    background-color: #d3d3d3; /* Cor da barra */
-    margin: 20px 0; /* Espaçamento vertical */
+    background-color: #d3d3d3;
+    margin: 20px 0;
 }
