@@ -1,10 +1,7 @@
 package com.weather_app.service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -51,42 +48,47 @@ public class WeatherService {
             throw new RuntimeException("Error decoding JSON: " + e.getMessage());
         }
 
+        // Dados do clima
         JsonNode mainData = root.path("main");
         double temperatureValue = mainData.path("temp").asDouble();
-        String celsiusTemp = String.format("%d°", (int) (temperatureValue - 273.15));
+        double feelsLike = mainData.path("feels_like").asDouble();
+        int feelsLikeCelsius = (int)Math.round(feelsLike - 273.15);
+        int celsiusTemp = (int)Math.round(temperatureValue - 273.15);
 
         JsonNode weatherDescription = root.path("weather").get(0);
         String description = weatherDescription.path("description").asText();
         String icon = weatherDescription.path("icon").asText();
 
+        JsonNode wind = root.path("wind");
+
+        double speed = wind.path("speed").asDouble();
+
         double humidity = mainData.path("humidity").asDouble();
+        double tempMin = mainData.path("temp_min").asDouble();
+        int tempMinCelsius = (int)Math.round(tempMin - 273.15);
+        double tempMax = mainData.path("temp_max").asDouble();
+        int tempMaxCelsius = (int)Math.round(tempMax - 273.15);
         int cloudiness = root.path("clouds").path("all").asInt();
         double rainLastHour = root.path("rain").path("1h").asDouble(0.0);
-
-
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEEE").withLocale(Locale.ENGLISH);
-        DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MMM").withLocale(Locale.ENGLISH);
-
-        String dayOfWeek = today.format(dayOfWeekFormatter);
-        int dayOfMonth = today.getDayOfMonth();
-        String month = today.format(monthFormatter);
-
+        
         Map<String, Object> weatherDataMap = new HashMap<>();
         weatherDataMap.put("city", city);
         weatherDataMap.put("temperature", celsiusTemp);
+        weatherDataMap.put("feelsLike", feelsLikeCelsius);
+        weatherDataMap.put("tempMin", tempMinCelsius);
+        weatherDataMap.put("tempMax", tempMaxCelsius);
+        weatherDataMap.put("speed", speed);
         weatherDataMap.put("description", description);
         weatherDataMap.put("icon", icon);
         weatherDataMap.put("humidity", humidity);
         weatherDataMap.put("cloudiness", cloudiness);
         weatherDataMap.put("rainLastHour", rainLastHour);
-        weatherDataMap.put("dayOfWeek", dayOfWeek);
-        weatherDataMap.put("dayOfMonth", dayOfMonth);
-        weatherDataMap.put("month", month);
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("weatherdata", weatherDataMap);
 
         return responseMap;
     }
+
 }
+

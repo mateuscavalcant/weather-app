@@ -15,7 +15,7 @@ import com.weather_app.service.WeatherService;
 
 @RestController
 @RequestMapping("/weather")
-@CrossOrigin(origins = "http://localhost:3000")  // Permite CORS para o frontend
+@CrossOrigin(origins = "http://localhost:5173")  // Permite CORS para o frontend
 public class WeatherController {
     
 
