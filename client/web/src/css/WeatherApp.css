@@ -102,9 +102,6 @@ form {
     
 }
 
-
-
-
 .weather-box .now {
     position: relative;
     color: #ffffff;
@@ -117,7 +114,7 @@ form {
     color: #ffffff;
     font-size: 15px;
     font-weight: 300;
-   
+    margin-bottom: 50px;
     text-transform: capitalize;
 }
 

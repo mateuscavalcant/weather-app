@@ -1,0 +1,6 @@
+com\weather_app\model\WeatherData.class
+com\weather_app\controller\WeatherController$LocationRequest.class
+com\weather_app\config\WebSecurityConfig.class
+com\weather_app\service\WeatherService.class
+com\weather_app\ServerApplication.class
+com\weather_app\controller\WeatherController.class
