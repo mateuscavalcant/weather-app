@@ -14,7 +14,7 @@ export const useWeatherApp = () => {
 
         setLoading(true);
 
-        fetch("http://localhost:8080/weather", {
+        fetch("https://weather-app-embf.onrender.com/weather", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
