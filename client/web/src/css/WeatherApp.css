@@ -8,13 +8,21 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background: linear-gradient(to bottom, blue, #679eff);
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
 .container {
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #679eff;
     column-gap: 30px;
 }
 
@@ -25,7 +33,6 @@
     width: 100%;
     padding: 30px;
     border-radius: 9px;
-    background: #679eff;
 }
 
 .form.weather {
@@ -149,7 +156,7 @@ form {
 }
 
 .search-box input {
-    color: #06283D;
+    background-color: #ffffff;
     width: 80%;
     font-size: 20px;
     font-weight: 500;
@@ -161,7 +168,7 @@ form {
 .search-box input::placeholder {
     font-size: 15px;
     font-weight: 500;
-    color: #06283D;
+    color: #021825;
     text-transform: capitalize;
 }
 
@@ -172,7 +179,6 @@ form {
     cursor: pointer;
     width: 50px;
     height: 50px;
-    color: #06283D;
     background: #ffffff;
     border-radius: 50%;
     font-size: 22px;
@@ -186,12 +192,12 @@ form {
 
 .search-box button:hover {
     color: #fff;
-    background: #ccc;
+    background: #fdfdfd;
 }
 
 .separator {
     border: none;
     height: 1px;
-    background-color: #d3d3d3;
+    background-color: #fdfdfd;
     margin: 20px 0;
 }

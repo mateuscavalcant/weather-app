@@ -14,7 +14,7 @@ export const useWeatherApp = () => {
 
         setLoading(true);
 
-        fetch("https://weather-app-embf.onrender.com/weather", {
+        fetch("https://weather-data-api-topaz.vercel.app/weather", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
