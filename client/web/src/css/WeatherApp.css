@@ -9,7 +9,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, blue, #679eff);
+    background: linear-gradient(to bottom, #679eff, rgb(19, 19, 255));
     margin: 0;
     display: flex;
     place-items: center;
@@ -157,6 +157,7 @@ form {
 
 .search-box input {
     background-color: #ffffff;
+    color: #021825;
     width: 80%;
     font-size: 20px;
     font-weight: 500;
